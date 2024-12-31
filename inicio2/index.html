@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoldenCoin</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fondo de partículas -->
+    <canvas id="particle-background"></canvas>
+
+    <!-- Encabezado con banner -->
+    <header class="banner">
+        <div class="logo-container">
+            <img src="logo.webp" alt="GoldenCoin Logo" class="rotating-logo">
+        </div>
+        <h1 class="title">Golden<span class="highlight">Coin</span></h1>
+    </header>
+
+    <!-- Sección para ingresar código -->
+    <div class="code-section">
+        <label for="code-input">Código de invitacion:</label>
+        <input type="text" id="code-input" placeholder="Escribe aquí tu código">
+        <button id="submit-button">Ingresar</button>
+        <p id="error-message" class="hidden">Código incorrecto, intenta de nuevo.</p>
+    </div>
+
+    <!-- Botones de inicio de sesión -->
+    <div id="login-buttons" class="hidden">
+       <button class="login-button facebook" onclick="location.href='inicio3/index.html'">
+            <img src="ficon.png" alt="Facebook Logo"> Ingresar con Facebook
+        </button>
+        <button class="login-button google" onclick="location.href='inicio3/gogle.html'">
+            <img src="gicon.png" alt="Google Logo"> Ingresar con Google
+        </button>
+        <button class="login-button apple" onclick="location.href='inicio3/aple.html'">
+            <img src="aicon.png" alt="Apple Logo"> Ingresar con Apple
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

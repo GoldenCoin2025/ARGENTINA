@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goldencoin</title>
+  <style>
+    /* Estilos generales */
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      font-family: 'Roboto', 'Poppins', Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Estilos del banner */
+    .banner {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100px;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 80px; /* Ajuste para centrar verticalmente */
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      animation: rotateLogo 9s linear infinite;
+      border-radius: 50%;
+      box-shadow: 0 0 10px 3px rgba(255, 215, 0, 0.8), 0 0 20px 5px rgba(255, 215, 0, 0.5);
+    }
+
+    @keyframes rotateLogo {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .goldencoin {
+      font-size: 28px;
+      font-weight: bold;
+      color: #e0c97c;
+      text-shadow: 0 2px 5px rgba(224, 201, 124, 0.7), 0 0 10px rgba(184, 159, 77, 0.5);
+      margin-top: 10px;
+    }
+
+    /* Loader elegante */
+    .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .loader div {
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      background: #e0c97c;
+      border-radius: 50%;
+      animation: bounce 1.5s infinite ease-in-out;
+    }
+
+    .loader div:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .loader div:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    .loader div:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes bounce {
+      0%, 80%, 100% {
+        transform: scale(0);
+      }
+      40% {
+        transform: scale(1);
+      }
+    }
+
+    /* Estilos del contenido */
+    .content {
+      display: none;
+      text-align: center;
+      position: relative;
+      margin-top: 30px; /* Ajustado para mayor distancia del logo */
+      opacity: 0; /* Oculto inicialmente */
+      transition: opacity 1.5s ease; /* Transición suave */
+    }
+
+    .content.show {
+      opacity: 1; /* Aparece suavemente */
+    }
+
+    .code {
+      font-size: 48px;
+      font-weight: bold;
+      color: #e0c97c;
+      margin-bottom: 20px;
+    }
+
+    .text-box {
+      width: 60%;
+      max-width: 600px;
+      padding: 20px;
+      font-size: 20px;
+      font-weight: normal;
+      text-align: center;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #e0c97c;
+      box-shadow: 0 0 15px rgba(224, 201, 124, 0.7), 0 0 25px rgba(184, 159, 77, 0.5);
+      line-height: 1.8;
+      animation: fadeInText 2s ease-in-out;
+      margin: 0 auto;
+    }
+
+    @keyframes fadeInText {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Efecto de partículas */
+    .particle {
+      position: absolute;
+      background-color: #FFD700;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      animation: float 5s infinite;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Banner -->
+  <div class="banner">
+    <div class="logo-container">
+      <img src="logo.webp" alt="Logo" class="logo">
+      <div class="goldencoin">GoldenCoin</div>
+    </div>
+  </div>
+
+  <!-- Loader -->
+  <div class="loader">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- Contenido -->
+  <div class="content" id="content">
+    <div class="code" id="code"></div>
+    <div class="text-box">
+      Este código es <span style="font-weight: bold; color: #e0c97c;">único y personal</span>. Sirve como tu identificador en nuestra plataforma y como una herramienta clave para invitar a otros. Al compartirlo, amplías tu red y creas nuevas oportunidades en nuestra comunidad.
+    </div>
+  </div>
+
+  <script>
+    // Generar un código alfanumérico aleatorio de 9 caracteres
+    function generateCode() {
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let code = '';
+      for (let i = 0; i < 9; i++) {
+        code += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      return code;
+    }
+
+    // Ocultar loader y mostrar contenido después de 10 segundos
+    setTimeout(() => {
+      document.querySelector('.loader').style.display = 'none';
+      const content = document.getElementById('content');
+      content.style.display = 'block';
+
+      // Generar y mostrar el código
+      document.getElementById('code').textContent = generateCode();
+
+      // Aplicar la clase para el efecto de desvanecimiento
+      setTimeout(() => {
+        content.classList.add('show');
+      }, 100);
+    }, 10000);
+
+    // Generar partículas en toda la pantalla
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.top = Math.random() * 100 + 'vh';
+      particle.style.animationDuration = Math.random() * 3 + 2 + 's';
+      document.body.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 5000);
+    }
+
+    setInterval(createParticle, 100);
+  </script>
+</body>
+</html>

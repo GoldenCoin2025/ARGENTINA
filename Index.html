@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoldenCoin</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilo global */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Banner fijo */
+        .banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(28, 28, 28, 0.9);
+            padding: 15px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .navigation a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .navigation a:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Secciones */
+        .section {
+            margin: 190px auto 20px; /* Siempre a 190px debajo del banner */
+            padding: 20px;
+            max-width: 800px;
+            background-color: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        #informacion {
+            display: none; /* Oculta la sección "Información" inicialmente */
+            overflow-y: auto; /* Habilita scroll si el contenido no cabe */
+            max-height: 70vh; /* Máxima altura para evitar que ocupe toda la pantalla */
+        }
+
+        #informacion.visible {
+            display: block; /* Muestra la sección cuando se agrega la clase "visible" */
+        }
+
+        /* Estilo del cronómetro */
+        #countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .time-block {
+            text-align: center;
+        }
+
+        .time-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .time-label {
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        /* Fondo de partículas */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo de partículas -->
+    <canvas id="canvas"></canvas>
+
+    <!-- Banner -->
+    <div class="banner">
+        <div class="logo-section">
+            <img src="logo.webp" alt="GoldenCoin Logo" class="logo">
+            <span class="banner-text">GoldenCoin</span>
+        </div>
+        <nav class="navigation">
+            <a id="inicio-link" href="#">Inicio</a>
+            <a id="informacion-link" href="#">Información</a>
+        </nav>
+        <button id="registro-btn" class="registro-btn" onclick="location.href='inicio2/index.html'">Registro</button>
+    </div>
+
+    <!-- Secciones -->
+    <div id="inicio" class="section">
+        <h2>Cuenta regresiva</h2>
+        <div id="countdown-timer"></div>
+    </div>
+
+    <div id="informacion" class="section">
+        <h2>Información</h2>
+        <div class="info-block">
+            <h3>¿Qué es GoldenCoin?</h3>
+            <p>GoldenCoin es una innovadora plataforma diseñada para revolucionar el comercio digital mediante soluciones tecnológicas avanzadas y seguras, otorgando tokens semanalmente. </p>
+        </div>
+        <div class="info-block">
+            <h3>Nuestro Compromiso</h3>
+            <p>Nos dedicamos a garantizar la transparencia y la confianza en cada transacción, ofreciendo un ecosistema accesible para todos.</p>
+        </div>
+        <div class="info-block">
+            <h3>Disponibilidad</h3>
+            <p>GoldenCoin estara disponible a transacciones en el mercado cuando airdrop llegue a los monederos mundiales, susedera cuando el cronometro llegue a 0 </p>
+        </div>
+        <div class="info-block">
+            <h3>Únete a Nosotros</h3>
+            <p>Forma parte de una comunidad global que impulsa el futuro de la economía digital, construyendo un mundo más conectado y eficiente.</p>
+        </div>
+        <div class="info-block">
+            <h3>Nuestras Soluciones</h3>
+            <p>Ofrecemos servicios innovadores en blockchain, seguridad financiera y tecnología de pagos para simplificar tu experiencia.</p>
+        </div>
+        <div class="info-block">
+            <h3>Visión de Futuro</h3>
+            <p>GoldenCoin está comprometido con el desarrollo sostenible y la innovación constante para liderar la transformación del mundo digital. Con un valor inicial de 0,9usd por cada GoldCoin</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="particles.js"></script>
+    <script>
+        // Manejo de navegación entre secciones
+        const informacionSection = document.getElementById("informacion");
+        const inicioSection = document.getElementById("inicio");
+
+        document.getElementById("informacion-link").addEventListener("click", (e) => {
+            e.preventDefault();
+            informacionSection.classList.add("visible");
+            inicioSection.style.display = "none";
+            window.scrollTo({
+                top: informacionSection.offsetTop - 190, // Alinea con el espacio bajo el banner
+                behavior: "smooth",
+            });
+        });
+    
+    
+
+        document.getElementById("inicio-link").addEventListener("click", (e) => {
+            e.preventDefault();
+            informacionSection.classList.remove("visible");
+            inicioSection.style.display = "block";
+            window.scrollTo({
+                top: inicioSection.offsetTop - 190, // Alinea con el espacio bajo el banner
+                behavior: "smooth",
+            });
+        });
+
+        // Cronómetro
+        const countdownTimer = document.getElementById("countdown-timer");
+        function startCountdown(targetDate) {
+            function updateTimer() {
+                const now = new Date().getTime();
+                const timeLeft = targetDate - now;
+
+                if (timeLeft < 0) {
+                    countdownTimer.innerHTML = "<div>¡Evento terminado!</div>";
+                    return;
+                }
+
+                const months = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 30));
+                const days = Math.floor((timeLeft % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                countdownTimer.innerHTML = `
+                    <div class="time-block">
+                        <span class="time-value">${months}</span>
+                        <small class="time-label">Meses</small>
+                    </div>
+                    <div class="time-block">
+                        <span class="time-value">${days}</span>
+                        <small class="time-label">Días</small>
+                    </div>
+                    <div class="time-block">
+                        <span class="time-value">${hours}</span>
+                        <small class="time-label">Horas</small>
+                    </div>
+                    <div class="time-block">
+                        <span class="time-value">${minutes}</span>
+                        <small class="time-label">Minutos</small>
+                    </div>
+                    <div class="time-block">
+                        <span class="time-value">${seconds}</span>
+                        <small class="time-label">Segundos</small>
+                    </div>
+                `;
+            }
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+        const targetDate = new Date("2025-01-09T23:59:59").getTime();
+        startCountdown(targetDate);
+    </script>
+</body>
+</html>

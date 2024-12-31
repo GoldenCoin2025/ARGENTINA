@@ -1,0 +1,193 @@
+/* Configuración general */
+body {
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #000;
+    color: white;
+    overflow: hidden;
+}
+
+/* Banner */
+.banner {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Más transparente */
+    color: white;
+    text-align: center;
+    padding: 15px 0; /* Tamaño más pequeño */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.logo-container {
+    width: 50px; /* Tamaño más pequeño */
+    margin: 0 auto;
+}
+
+.rotating-logo {
+    width: 50px; /* Tamaño más pequeño */
+    height: 50px; /* Tamaño más pequeño */
+    border-radius: 50%; /* Contorno circular */
+    border: 2px solid white; /* Borde blanco para resaltar */
+    animation: rotateLogo 9s linear infinite; /* Rotación constante */
+}
+
+@keyframes rotateLogo {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Título GoldenCoin más elegante */
+.title {
+    font-size: 1.8rem; /* Tamaño ajustado */
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, #f9d423, #f6e27f, #f9d423); /* Tonos dorados sofisticados */
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 4s linear infinite; /* Movimiento suave */
+    text-shadow: 1px 1px 8px rgba(255, 223, 0, 0.8); /* Sutil efecto de brillo */
+    font-family: 'Georgia', serif; /* Tipografía elegante */
+}
+
+@keyframes shine {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+/* Sección para ingresar código */
+.code-section {
+    margin-top: 200px;
+    text-align: center;
+    z-index: 20;
+    position: relative;
+}
+
+#code-input {
+    padding: 10px;
+    width: 250px;
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: #333;
+    color: white;
+}
+
+#submit-button {
+    padding: 10px 20px;
+    background-color: #d4af37;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#error-message {
+    color: red;
+    margin-top: 10px;
+    font-weight: bold;
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Botones de inicio de sesión */
+#login-buttons {
+    display: none; /* Ocultos inicialmente */
+    margin-top: 190px; /* Espacio adicional para bajarlos */
+    text-align: center;
+}
+
+#login-buttons.fade-in {
+    animation: fadeIn 1s ease-in-out;
+    display: flex !important; /* Mostrar los botones */
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Botones de inicio de sesión */
+.login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    padding: 10px 15px;
+    margin: 10px auto;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 1px solid #e0e0e0; /* Contorno tenue */
+    background-color: white; /* Fondo blanco */
+    color: black; /* Texto negro */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+    gap: 10px;
+}
+
+.login-button img {
+    width: 24px;
+    height: 24px;
+}
+
+.login-button:hover {
+    background-color: #f7f7f7; /* Cambio de fondo sutil */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+    transform: scale(1.05); /* Suave zoom */
+}
+
+/* Específicos para cada botón */
+.facebook {
+    border: 1px solid #1877f2; /* Contorno azul tenue */
+}
+
+.google {
+    border: 1px solid #db4437; /* Contorno rojo tenue */
+}
+
+.apple {
+    border: 1px solid #333; /* Contorno gris oscuro */
+}
+
+/* Fondo de partículas */
+#particle-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: black;
+}
